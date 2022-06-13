@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 300px;
+				height: 36px;
+				border: 1px solid skyblue;
+				line-height: 36px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+
+		<script>
+			const div = document.querySelector('div')
+			function FormatDate() {
+				// 实例化日期对象
+				const date = new Date()
+				// 获取年月日
+				const year = date.getFullYear()
+				let month = date.getMonth() + 1
+				month = month < 10 ? '0' + month : month
+				let dates = date.getDate()
+				dates = dates < 10 ? '0' + dates : dates
+				const arr = [
+					'星期天',
+					'星期一',
+					'星期二',
+					'星期三',
+					'星期四',
+					'星期五',
+					'星期六',
+				]
+				const day = date.getDay()
+				// let xq = null
+				// switch (day) {
+				// 	case 0:
+				// 		xq = '星期天'
+				// 		break
+				// 	case 1:
+				// 		xq = '星期一'
+				// 		break
+				// 	case 2:
+				// 		xq = '星期二'
+				// 		break
+				// 	case 3:
+				// 		xq = '星期三'
+				// 		break
+				// 	case 4:
+				// 		xq = '星期四'
+				// 		break
+				// 	case 5:
+				// 		xq = '星期五'
+				// 		break
+				// 	case 6:
+				// 		xq = '星期六'
+				// 		break
+				// 	default:
+				// 		break
+				// }
+				// 获取时分秒
+				let h = date.getHours()
+				h = h < 10 ? '0' + h : h
+				let m = date.getMinutes()
+				m = m < 10 ? '0' + m : m
+				let s = date.getSeconds()
+				s = s < 10 ? '0' + s : s
+
+				return `${year}年${month}月${dates}日--${h}:${m}:${s}--${arr[day]}`
+			}
+
+			div.innerHTML = FormatDate()
+
+			setInterval(function () {
+				div.innerHTML = FormatDate()
+			}, 1000)
+
+			// const div = document.querySelector('div')
+			// const date = new Date()
+
+			// div.innerHTML = date.toLocaleString()
+			// // 返回年月日时分秒
+			// console.log(date.toLocaleString());
+			// // 返回年月日
+			// console.log(date.toLocaleDateString())
+			// // 返回时分秒
+			// console.log(date.toLocaleTimeString())
+			// // 返回时分秒 中国标准时间
+			// console.log(date.toTimeString())
+			// // 返回英文年月日 星期
+			// console.log(date.toDateString())
+		</script>
+	</body>
+</html>
